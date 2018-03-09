@@ -53,6 +53,27 @@ namespace MycoViewer.Services
             }
         }
 
+        public static async Task<List<MBWTaxon>> MBWSearchAsync(MBWSearchField searchField, ComparisonOperator comparisonOperator, string searchValue, int? limit = null)
+        {
+            var search = new MBWSearch(searchField, comparisonOperator, searchValue, limit);
+            var results = await search.Perform();
+            return results?.Taxon?.Select((taxonResult) => new MBWTaxon()
+            {
+                Authors = taxonResult.authors_,
+                CreationDate = taxonResult.creation_date,
+                Description_pt = taxonResult.description_pt_,
+                E3787 = taxonResult.e3787,
+                Epithet = taxonResult.epithet_,
+                Gender = taxonResult.gender_,
+                LastChangeDate = taxonResult.last_change_date,
+                LiteraturePageNumber = taxonResult.literaturepagenr_,
+                MycobankNumber = Convert.ToString(taxonResult.mycobanknr_),
+                Name = taxonResult.name,
+                NameYear = taxonResult.nameyear_,
+                U3733 = taxonResult.u3733
+            }).ToList();
+        }
+
         private static async Task<List<Taxon>> DoSearchAsync(ISearch search)
         {
             return Transform(await search.Perform());
