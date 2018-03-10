@@ -15,8 +15,8 @@
         <helper:EnumToBooleanConverter x:Key="EnumToBooleanConverter" EnumType="ElementTheme" />
     </Page.Resources>
 
-    <Grid>
-        <Grid Margin="{StaticResource MediumLeftRightMargin}">
+    <Grid >
+        <Grid Margin="{StaticResource MediumLeftRightMargin}" Padding="32"  Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="48"/>
                 <RowDefinition Height="Auto"/>
@@ -25,6 +25,7 @@
                 Grid.Row="0"
                 x:Uid="Settings_Title"
                 x:Name="TitlePage"
+                Foreground="Black"
                 Style="{StaticResource PageTitleStyle}" />
 
             <StackPanel Grid.Row="1">
@@ -97,9 +98,6 @@
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0"/>
                     </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="TitlePage.Margin" cu:Value="48,0,12,7" fcu:Value="0,0,12,7"/>
-                    </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>

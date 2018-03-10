@@ -1,9 +1,11 @@
 ﻿using System;
-
 using MycoViewer.Services;
 
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Core;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 
 namespace MycoViewer

@@ -2,6 +2,8 @@
 {
     public class MBWTaxon
     {
+        public string Id { get; set; }
+
         public string Authors { get; set; }
 
         public string CreationDate { get; set; }

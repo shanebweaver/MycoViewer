@@ -29,6 +29,7 @@
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
 
         </Grid>
+        
         <!--  Adaptive triggers  -->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="WindowStates">

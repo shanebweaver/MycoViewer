@@ -59,6 +59,7 @@ namespace MycoViewer.Services
             var results = await search.Perform();
             return results?.Taxon?.Select((taxonResult) => new MBWTaxon()
             {
+                Id = Convert.ToString(taxonResult._id),
                 Authors = taxonResult.authors_,
                 CreationDate = taxonResult.creation_date,
                 Description_pt = taxonResult.description_pt_,
@@ -74,10 +75,19 @@ namespace MycoViewer.Services
             }).ToList();
         }
 
-        public static async Task<List<Taxon>> MycobankLiteratureSearchAsync(MycobankLiteratureSearchField searchField, ComparisonOperator comparisonOperator, string searchValue, int? limit = null)
+        public static async Task<List<MycobankLiteratureTaxon>> MycobankLiteratureSearchAsync(MycobankLiteratureSearchField searchField, ComparisonOperator comparisonOperator, string searchValue, int? limit = null)
         {
             var search = new MycobankLiteratureSearch(searchField, comparisonOperator, searchValue, limit);
-            return await DoSearchAsync(search);
+            var results = await search.Perform();
+            return results?.Taxon?.Select((taxonResult) => new MycobankLiteratureTaxon()
+            {
+                Authors = taxonResult.authors_,
+                CreationDate = taxonResult.creation_date,
+                Id = Convert.ToString(taxonResult._id),
+                LastChangeDate = taxonResult.last_change_date,
+                MycobankNumber = Convert.ToString(taxonResult.mycobanknr_),
+                Name = taxonResult.name,
+            }).ToList();
         }
 
         public static async Task<List<Taxon>> MycobankSearchAsync(MycobankSearchField searchField, ComparisonOperator comparisonOperator, string searchValue, int? limit = null)

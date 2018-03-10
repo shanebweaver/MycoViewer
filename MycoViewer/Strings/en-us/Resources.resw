@@ -205,7 +205,7 @@
     <value>This view is being disposed.</value>
     <comment>View disposed</comment>
   </data>
-  <data name="MBWSearchPage_Title" xml:space="preserve">
+  <data name="MBWSearchPage_Title.Text" xml:space="preserve">
     <value>MBW Search</value>
     <comment>The MBW Service Search page title</comment>
   </data>
@@ -222,6 +222,18 @@
     <value>Mycobank Specimens Search</value>
   </data>
   <data name="Shell_TaxaDescriptionsSearch" xml:space="preserve">
+    <value>Taxa Descriptions Search</value>
+  </data>
+  <data name="MycobankLiteratureSearchPage_Title.Text" xml:space="preserve">
+    <value>Mycobank Literature Search</value>
+  </data>
+  <data name="MycobankSearchPage_Title.Text" xml:space="preserve">
+    <value>Mycobank Search</value>
+  </data>
+  <data name="MycobankSpecimensSearchPage_Title.Text" xml:space="preserve">
+    <value>Mycobank Specimens Search</value>
+  </data>
+  <data name="TaxaDescriptionsSearchPage_Title.Text" xml:space="preserve">
     <value>Taxa Descriptions Search</value>
   </data>
 </root>

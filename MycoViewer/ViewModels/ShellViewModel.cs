@@ -51,7 +51,7 @@ namespace MycoViewer.ViewModels
             set { Set(ref _selected, value); }
         }
 
-        private SplitViewDisplayMode _displayMode = SplitViewDisplayMode.CompactInline;
+        private SplitViewDisplayMode _displayMode = SplitViewDisplayMode.CompactOverlay;
 
         public SplitViewDisplayMode DisplayMode
         {
@@ -67,14 +67,6 @@ namespace MycoViewer.ViewModels
         {
             get { return _primaryItems; }
             set { Set(ref _primaryItems, value); }
-        }
-
-        private ObservableCollection<ShellNavigationItem> _secondaryItems = new ObservableCollection<ShellNavigationItem>();
-
-        public ObservableCollection<ShellNavigationItem> SecondaryItems
-        {
-            get { return _secondaryItems; }
-            set { Set(ref _secondaryItems, value); }
         }
 
         private ICommand _openPaneCommand;
@@ -100,7 +92,7 @@ namespace MycoViewer.ViewModels
             {
                 if (_itemSelected == null)
                 {
-                    _itemSelected = new RelayCommand<HamburgetMenuItemInvokedEventArgs>(ItemSelected);
+                    _itemSelected = new RelayCommand<NavigationViewItemInvokedEventArgs>(ItemSelected);
                 }
 
                 return _itemSelected;
@@ -122,15 +114,17 @@ namespace MycoViewer.ViewModels
             }
         }
 
+        private ShellNavigationItem _settingsNavigationItem;
+
         private void GoToState(string stateName)
         {
             switch (stateName)
             {
                 case PanoramicStateName:
-                    DisplayMode = SplitViewDisplayMode.CompactInline;
+                    DisplayMode = SplitViewDisplayMode.CompactOverlay;
                     break;
                 case WideStateName:
-                    DisplayMode = SplitViewDisplayMode.CompactInline;
+                    DisplayMode = SplitViewDisplayMode.CompactOverlay;
                     IsPaneOpen = false;
                     break;
                 case NarrowStateName:
@@ -170,7 +164,6 @@ namespace MycoViewer.ViewModels
         private void PopulateNavItems()
         {
             _primaryItems.Clear();
-            _secondaryItems.Clear();
 
             // TODO WTS: Change the symbols for each item as appropriate for your app
             // More on Segoe UI Symbol icons: https://docs.microsoft.com/windows/uwp/style/segoe-ui-symbol-font
@@ -182,17 +175,21 @@ namespace MycoViewer.ViewModels
             _primaryItems.Add(new ShellNavigationItem("Shell_MycobankSearch".GetLocalized(), Symbol.Find, typeof(MycobankSearchViewModel).FullName));
             _primaryItems.Add(new ShellNavigationItem("Shell_MycobankSpecimensSearch".GetLocalized(), Symbol.Find, typeof(MycobankSpecimensSearchViewModel).FullName));
             _primaryItems.Add(new ShellNavigationItem("Shell_TaxaDescriptionsSearch".GetLocalized(), Symbol.Find, typeof(TaxaDescriptionsSearchViewModel).FullName));
-            _secondaryItems.Add(new ShellNavigationItem("Shell_Settings".GetLocalized(), Symbol.Setting, typeof(SettingsViewModel).FullName));
+            _settingsNavigationItem = new ShellNavigationItem("Shell_Settings".GetLocalized(), Symbol.Setting, typeof(SettingsViewModel).FullName);
         }
 
-        private void ItemSelected(HamburgetMenuItemInvokedEventArgs args)
+        private void ItemSelected(NavigationViewItemInvokedEventArgs args)
         {
-            if (DisplayMode == SplitViewDisplayMode.CompactOverlay || DisplayMode == SplitViewDisplayMode.Overlay)
-            {
-                IsPaneOpen = false;
-            }
+            IsPaneOpen = false;
 
-            Navigate(args.InvokedItem);
+            if (args.IsSettingsInvoked)
+            {
+                Navigate(_settingsNavigationItem);
+            }
+            else
+            {
+                Navigate(args.InvokedItem);
+            }
         }
 
         private void Frame_Navigated(object sender, NavigationEventArgs e)
@@ -201,10 +198,6 @@ namespace MycoViewer.ViewModels
             {
                 var vm = NavigationService.GetNameOfRegisteredPage(e.SourcePageType);
                 var navigationItem = PrimaryItems?.FirstOrDefault(i => i.ViewModelName == vm);
-                if (navigationItem == null)
-                {
-                    navigationItem = SecondaryItems?.FirstOrDefault(i => i.ViewModelName == vm);
-                }
 
                 if (navigationItem != null)
                 {

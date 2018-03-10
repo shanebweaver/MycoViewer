@@ -81,15 +81,11 @@
                         </Style>
                     </GridView.ItemContainerStyle>
                     <GridView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Taxon">
+                        <DataTemplate x:DataType="models:MycobankLiteratureTaxon">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock>Name:</TextBlock>
                                     <TextBlock Text="{x:Bind Name}" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock>Description:</TextBlock>
-                                    <TextBlock Text="{x:Bind Description_pt}" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock>Authors:</TextBlock>
@@ -100,36 +96,16 @@
                                     <TextBlock Text="{x:Bind CreationDate}" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock>Name Year:</TextBlock>
-                                    <TextBlock Text="{x:Bind NameYear}" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock>U3733:</TextBlock>
-                                    <TextBlock Text="{x:Bind U3733}" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock>Mycobank #:</TextBlock>
-                                    <TextBlock Text="{x:Bind MycobankNumber}" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock>E3787:</TextBlock>
-                                    <TextBlock Text="{x:Bind E3787}" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock>Epithet:</TextBlock>
-                                    <TextBlock Text="{x:Bind Epithet}" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock>Gender:</TextBlock>
-                                    <TextBlock Text="{x:Bind Gender}" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock>Literature Page #:</TextBlock>
-                                    <TextBlock Text="{x:Bind LiteraturePageNumber}" />
+                                    <TextBlock>Id:</TextBlock>
+                                    <TextBlock Text="{x:Bind Id}" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock>Last Change Date:</TextBlock>
                                     <TextBlock Text="{x:Bind LastChangeDate}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Mycobank #:</TextBlock>
+                                    <TextBlock Text="{x:Bind MycobankNumber}" />
                                 </StackPanel>
                             </StackPanel>
                         </DataTemplate>
@@ -151,9 +127,6 @@
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0"/>
                     </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="TitlePage.Margin" cu:Value="48,0,12,7" fcu:Value="0,0,12,7"/>
-                    </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
