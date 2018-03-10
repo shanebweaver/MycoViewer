@@ -19,6 +19,10 @@ namespace MycoViewer.ViewModels
             SimpleIoc.Default.Register<ShellViewModel>();
             Register<MainViewModel, MainPage>();
             Register<MBWSearchViewModel, MBWSearchPage>();
+            Register<MycobankLiteratureSearchViewModel, MycobankLiteratureSearchPage>();
+            Register<MycobankSearchViewModel, MycobankSearchPage>();
+            Register<MycobankSpecimensSearchViewModel, MycobankSpecimensSearchPage>();
+            Register<TaxaDescriptionsSearchViewModel, TaxaDescriptionsSearchPage>();
             Register<SettingsViewModel, SettingsPage>();
             Register<UriSchemeExampleViewModel, UriSchemeExamplePage>();
         }
@@ -30,6 +34,14 @@ namespace MycoViewer.ViewModels
         public MainViewModel MainViewModel => ServiceLocator.Current.GetInstance<MainViewModel>();
 
         public MBWSearchViewModel MBWSearchViewModel => ServiceLocator.Current.GetInstance<MBWSearchViewModel>();
+
+        public MycobankLiteratureSearchViewModel MycobankLiteratureSearchViewModel => ServiceLocator.Current.GetInstance<MycobankLiteratureSearchViewModel>();
+
+        public MycobankSearchViewModel MycobankSearchViewModel => ServiceLocator.Current.GetInstance<MycobankSearchViewModel>();
+
+        public MycobankSpecimensSearchViewModel MycobankSpecimensSearchViewModel => ServiceLocator.Current.GetInstance<MycobankSpecimensSearchViewModel>();
+
+        public TaxaDescriptionsSearchViewModel TaxaDescriptionsSearchViewModel => ServiceLocator.Current.GetInstance<TaxaDescriptionsSearchViewModel>();
 
         public ShellViewModel ShellViewModel => ServiceLocator.Current.GetInstance<ShellViewModel>();
 

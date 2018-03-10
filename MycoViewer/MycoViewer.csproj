@@ -134,6 +134,10 @@
     <Compile Include="Services\ThemeSelectorService.cs" />
     <Compile Include="Services\ViewLifetimeControl.cs" />
     <Compile Include="Services\WindowManagerService.cs" />
+    <Compile Include="ViewModels\TaxaDescriptionsSearchViewModel.cs" />
+    <Compile Include="ViewModels\MycobankSpecimensSearchViewModel.cs" />
+    <Compile Include="ViewModels\MycobankSearchViewModel.cs" />
+    <Compile Include="ViewModels\MycobankLiteratureSearchViewModel.cs" />
     <Compile Include="ViewModels\MBWSearchViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
@@ -141,6 +145,18 @@
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\UriSchemeExampleViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\TaxaDescriptionsSearchPage.xaml.cs">
+      <DependentUpon>TaxaDescriptionsSearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MycobankSpecimensSearchPage.xaml.cs">
+      <DependentUpon>MycobankSpecimensSearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MycobankLiteratureSearchPage.xaml.cs">
+      <DependentUpon>MycobankLiteratureSearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MycobankSearchPage.xaml.cs">
+      <DependentUpon>MycobankSearchPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MBWSearchPage.xaml.cs">
       <DependentUpon>MBWSearchPage.xaml</DependentUpon>
     </Compile>
@@ -187,6 +203,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\TaxaDescriptionsSearchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MycobankSpecimensSearchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MycobankLiteratureSearchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MycobankSearchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MBWSearchPage.xaml">
       <Generator>MSBuild:Compile</Generator>

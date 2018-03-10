@@ -1,0 +1,161 @@
+﻿<Page
+    x:Class="MycoViewer.Views.MycobankSearchPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Style="{StaticResource PageStyle}"
+    DataContext="{Binding MycobankSearchViewModel, Source={StaticResource Locator}}"
+    xmlns:models="using:MycoViewer.Models"
+    xmlns:fcu ="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,5)"
+    xmlns:cu ="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract,5)"
+    mc:Ignorable="d">
+    <Grid
+        x:Name="ContentArea"
+        Margin="{StaticResource MediumLeftRightMargin}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="TitleRow" Height="48"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            x:Name="TitlePage"
+            x:Uid="MycobankSearchPage_Title"
+            Style="{StaticResource PageTitleStyle}" />
+
+        <Grid 
+            Grid.Row="1" 
+            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            
+            <StackPanel
+                Name="SearchPanel"
+                Orientation="Horizontal"
+                VerticalAlignment="Top">
+
+                <ComboBox
+                    ItemsSource="{x:Bind ViewModel.SearchFields}"
+                    SelectedItem="{x:Bind ViewModel.CurrentSearchField, Mode=TwoWay}" />
+
+                <ComboBox
+                    ItemsSource="{x:Bind ViewModel.ComparisonOperators}"
+                    SelectedItem="{x:Bind ViewModel.CurrentComparisonOperator, Mode=TwoWay}" />
+
+                <TextBox
+                    Name="SearchTextBox"
+                    Text="{x:Bind ViewModel.SearchValue, Mode=TwoWay}" />
+
+                <TextBox
+                    PlaceholderText="Limit"
+                    Text="{x:Bind ViewModel.Limit, Mode=TwoWay}" />
+
+                <Button
+                    Command="{x:Bind ViewModel.SearchCommand}"
+                    IsEnabled="{x:Bind ViewModel.IsSearching, Converter={StaticResource InverseBoolConverter}, Mode=OneWay}">
+                    Search
+                </Button>
+
+                <ProgressRing
+                    IsActive="{x:Bind ViewModel.IsSearching, Mode=OneWay}"
+                    Foreground="Black"
+                    Width="32"
+                    Height="32" />
+
+            </StackPanel>
+
+            <Grid
+                Name="ResultsPanel"
+                Grid.Row="1">
+
+                <GridView
+                    ItemsSource="{x:Bind ViewModel.SearchResults}">
+                    <GridView.ItemContainerStyle>
+                        <Style TargetType="GridViewItem">
+                            <Setter Property="HorizontalAlignment" Value="Left" />
+                            <Setter Property="Margin" Value="5" />
+                        </Style>
+                    </GridView.ItemContainerStyle>
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Taxon">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Name:</TextBlock>
+                                    <TextBlock Text="{x:Bind Name}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Description:</TextBlock>
+                                    <TextBlock Text="{x:Bind Description_pt}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Authors:</TextBlock>
+                                    <TextBlock Text="{x:Bind Authors}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>CreationDate:</TextBlock>
+                                    <TextBlock Text="{x:Bind CreationDate}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Name Year:</TextBlock>
+                                    <TextBlock Text="{x:Bind NameYear}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>U3733:</TextBlock>
+                                    <TextBlock Text="{x:Bind U3733}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Mycobank #:</TextBlock>
+                                    <TextBlock Text="{x:Bind MycobankNumber}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>E3787:</TextBlock>
+                                    <TextBlock Text="{x:Bind E3787}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Epithet:</TextBlock>
+                                    <TextBlock Text="{x:Bind Epithet}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Gender:</TextBlock>
+                                    <TextBlock Text="{x:Bind Gender}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Literature Page #:</TextBlock>
+                                    <TextBlock Text="{x:Bind LiteraturePageNumber}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Last Change Date:</TextBlock>
+                                    <TextBlock Text="{x:Bind LastChangeDate}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+
+            </Grid>
+
+        </Grid>
+        <!--  Adaptive triggers  -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowStates">
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="640"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TitlePage.Margin" cu:Value="48,0,12,7" fcu:Value="0,0,12,7"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>

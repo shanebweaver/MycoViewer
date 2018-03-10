@@ -74,6 +74,30 @@ namespace MycoViewer.Services
             }).ToList();
         }
 
+        public static async Task<List<Taxon>> MycobankLiteratureSearchAsync(MycobankLiteratureSearchField searchField, ComparisonOperator comparisonOperator, string searchValue, int? limit = null)
+        {
+            var search = new MycobankLiteratureSearch(searchField, comparisonOperator, searchValue, limit);
+            return await DoSearchAsync(search);
+        }
+
+        public static async Task<List<Taxon>> MycobankSearchAsync(MycobankSearchField searchField, ComparisonOperator comparisonOperator, string searchValue, int? limit = null)
+        {
+            var search = new MycobankSearch(searchField, comparisonOperator, searchValue, limit);
+            return await DoSearchAsync(search);
+        }
+
+        public static async Task<List<Taxon>> MycobankSpecimensSearchAsync(MycobankSpecimensSearchField searchField, ComparisonOperator comparisonOperator, string searchValue, int? limit = null)
+        {
+            var search = new MycobankSpecimensSearch(searchField, comparisonOperator, searchValue, limit);
+            return await DoSearchAsync(search);
+        }
+
+        public static async Task<List<Taxon>> TaxaDescriptionsSearchAsync(TaxaDescriptionsSearchField searchField, ComparisonOperator comparisonOperator, string searchValue, int? limit = null)
+        {
+            var search = new TaxaDescriptionsSearch(searchField, comparisonOperator, searchValue, limit);
+            return await DoSearchAsync(search);
+        }
+
         private static async Task<List<Taxon>> DoSearchAsync(ISearch search)
         {
             return Transform(await search.Perform());

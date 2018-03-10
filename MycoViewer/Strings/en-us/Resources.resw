@@ -209,4 +209,19 @@
     <value>MBW Search</value>
     <comment>The MBW Service Search page title</comment>
   </data>
+  <data name="Shell_MBWSearch" xml:space="preserve">
+    <value>MBW Search</value>
+  </data>
+  <data name="Shell_MycobankLiteratureSearch" xml:space="preserve">
+    <value>Mycobank Literature Search</value>
+  </data>
+  <data name="Shell_MycobankSearch" xml:space="preserve">
+    <value>Mycobank Search</value>
+  </data>
+  <data name="Shell_MycobankSpecimensSearch" xml:space="preserve">
+    <value>Mycobank Specimens Search</value>
+  </data>
+  <data name="Shell_TaxaDescriptionsSearch" xml:space="preserve">
+    <value>Taxa Descriptions Search</value>
+  </data>
 </root>
