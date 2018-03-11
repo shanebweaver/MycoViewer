@@ -90,22 +90,80 @@ namespace MycoViewer.Services
             }).ToList();
         }
 
-        public static async Task<List<Taxon>> MycobankSearchAsync(MycobankSearchField searchField, ComparisonOperator comparisonOperator, string searchValue, int? limit = null)
+        public static async Task<List<MycobankTaxon>> MycobankSearchAsync(MycobankSearchField searchField, ComparisonOperator comparisonOperator, string searchValue, int? limit = null)
         {
             var search = new MycobankSearch(searchField, comparisonOperator, searchValue, limit);
-            return await DoSearchAsync(search);
+            var results = await search.Perform();
+            return results?.Taxon?.Select((taxonResult) => new MycobankTaxon()
+            {
+                Id = Convert.ToString(taxonResult._id),
+                Anamorph_pt = taxonResult.anamorph_pt_,
+                Authors = taxonResult.authors_,
+                AuthorsAbbreviated = taxonResult.authorsabbrev_,
+                Classification = taxonResult.classification_,
+                CodeToxicity = taxonResult.codetoxicity_,
+                CreationDate = taxonResult.creation_date,
+                CurrentName_pt = taxonResult.currentname_pt_,
+                DatePublic = taxonResult.datepublic_,
+                Description_pt = taxonResult.description_pt_,
+                E3787 = taxonResult.e3787,
+                E4060 = taxonResult.e4060,
+                Epithet = taxonResult.epithet_,
+                Externallinks = taxonResult.externallinks_,
+                FacultativeSynonyms_pt = taxonResult.facultativesynonyms_pt_,
+                Files_pt = taxonResult.files_pt_,
+                Gender = taxonResult.gender_,
+                HumanPathogenicityCode = taxonResult.humanpathogenicitycode_,
+                LastChangeDate = taxonResult.last_change_date,
+                LiteraturePageNumber = taxonResult.literaturepagenr_,
+                Literature_pt = taxonResult.literature_pt_,
+                MycobankNumber = Convert.ToString(taxonResult.mycobanknr_),
+                Name = taxonResult.name,
+                NameStatus = taxonResult.namestatus_,
+                NameType = taxonResult.nametype_,
+                NameYear = taxonResult.nameyear_,
+                ObligateSynonyms_pt = taxonResult.obligatesynonyms_pt_,
+                OrthographicalVariantOf_pt = taxonResult.orthvariantof_pt_,
+                PlantPathogenicityCode = taxonResult.plantpathogenicitycode_,
+                Rank_pt = taxonResult.rank_pt_,
+                SanctionedBy = taxonResult.sanctionedby_,
+                SanctioningRef = taxonResult.sanctioningref_,
+                Specimen_pt = taxonResult.specimen_pt_,
+                U3732 = taxonResult.u3732,
+                U3733 = taxonResult.u3733,
+                U3734 = taxonResult.u3734,
+                U3735 = taxonResult.u3735,
+                V4912 = taxonResult.v4912,
+            }).ToList();
         }
 
-        public static async Task<List<Taxon>> MycobankSpecimensSearchAsync(MycobankSpecimensSearchField searchField, ComparisonOperator comparisonOperator, string searchValue, int? limit = null)
+        public static async Task<List<MycobankSpecimensTaxon>> MycobankSpecimensSearchAsync(MycobankSpecimensSearchField searchField, ComparisonOperator comparisonOperator, string searchValue, int? limit = null)
         {
             var search = new MycobankSpecimensSearch(searchField, comparisonOperator, searchValue, limit);
-            return await DoSearchAsync(search);
+            var results = await search.Perform();
+            return results?.Taxon?.Select((taxonResult) => new MycobankSpecimensTaxon()
+            {
+                Id = Convert.ToString(taxonResult._id),
+                Files_pt = taxonResult.files_pt_,
+                LastChangeDate = taxonResult.last_change_date,
+                Name = taxonResult.name,
+            }).ToList();
         }
 
-        public static async Task<List<Taxon>> TaxaDescriptionsSearchAsync(TaxaDescriptionsSearchField searchField, ComparisonOperator comparisonOperator, string searchValue, int? limit = null)
+        public static async Task<List<TaxaDescriptionsTaxon>> TaxaDescriptionsSearchAsync(TaxaDescriptionsSearchField searchField, ComparisonOperator comparisonOperator, string searchValue, int? limit = null)
         {
             var search = new TaxaDescriptionsSearch(searchField, comparisonOperator, searchValue, limit);
-            return await DoSearchAsync(search);
+            var results = await search.Perform();
+            return results?.Taxon?.Select((taxonResult) => new TaxaDescriptionsTaxon()
+            {
+                Id = Convert.ToString(taxonResult._id),
+                CreationDate = taxonResult.creation_date,
+                LastChangeDate = taxonResult.last_change_date,
+                LiteratureJournalBook = taxonResult.literaturejournalbook_,
+                LiteraturePageNumber = taxonResult.literaturepagenr_,
+                Literature_pt = taxonResult.literature_pt_,
+                Name = taxonResult.name,
+            }).ToList();
         }
 
         private static async Task<List<Taxon>> DoSearchAsync(ISearch search)

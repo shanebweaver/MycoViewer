@@ -114,15 +114,13 @@
         <NavigationView
             x:Name="NavigationMenu"
             Canvas.ZIndex="0"
-            
             SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
             IsPaneOpen="{x:Bind ViewModel.IsPaneOpen, Mode=TwoWay}"
             MenuItemTemplate="{StaticResource NavigationMenuItemDataTemplate}"
             MenuItemsSource="{x:Bind ViewModel.PrimaryItems}"
             IsSettingsVisible="True"
             Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"
-            AlwaysShowHeader="True"
-            Header="MycoViewer">
+            AlwaysShowHeader="False">
 
             <i:Interaction.Behaviors>
                 <ic:EventTriggerBehavior EventName="ItemInvoked">

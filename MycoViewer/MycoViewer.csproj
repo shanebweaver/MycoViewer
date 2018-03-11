@@ -124,7 +124,9 @@
     <Compile Include="Helpers\SettingsStorageExtensions.cs" />
     <Compile Include="Models\MBWTaxon.cs" />
     <Compile Include="Models\MycobankLiteratureTaxon.cs" />
+    <Compile Include="Models\MycobankSpecimensTaxon.cs" />
     <Compile Include="Models\MycobankTaxon.cs" />
+    <Compile Include="Models\TaxaDescriptionsTaxon.cs" />
     <Compile Include="Models\Taxon.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultLaunchActivationHandler.cs" />
@@ -136,6 +138,8 @@
     <Compile Include="Services\ThemeSelectorService.cs" />
     <Compile Include="Services\ViewLifetimeControl.cs" />
     <Compile Include="Services\WindowManagerService.cs" />
+    <Compile Include="ViewModels\MasterIdentificationsViewModel.cs" />
+    <Compile Include="ViewModels\MasterSearchViewModel.cs" />
     <Compile Include="ViewModels\TaxaDescriptionsSearchViewModel.cs" />
     <Compile Include="ViewModels\MycobankSpecimensSearchViewModel.cs" />
     <Compile Include="ViewModels\MycobankSearchViewModel.cs" />
@@ -147,6 +151,9 @@
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\UriSchemeExampleViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\MasterSearchPage.xaml.cs">
+      <DependentUpon>MasterSearchPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TaxaDescriptionsSearchPage.xaml.cs">
       <DependentUpon>TaxaDescriptionsSearchPage.xaml</DependentUpon>
     </Compile>
@@ -205,6 +212,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\MasterSearchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TaxaDescriptionsSearchPage.xaml">
       <Generator>MSBuild:Compile</Generator>

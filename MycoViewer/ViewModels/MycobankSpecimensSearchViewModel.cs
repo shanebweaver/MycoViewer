@@ -56,8 +56,8 @@ namespace MycoViewer.ViewModels
             set => Set(ref _limit, value);
         }
 
-        private ObservableCollection<Taxon> _searchResults;
-        public ObservableCollection<Taxon> SearchResults
+        private ObservableCollection<MycobankSpecimensTaxon> _searchResults;
+        public ObservableCollection<MycobankSpecimensTaxon> SearchResults
         {
             get => _searchResults;
             set => Set(ref _searchResults, value);
@@ -83,7 +83,7 @@ namespace MycoViewer.ViewModels
             SearchValue = string.Empty;
             Limit = string.Empty;
 
-            SearchResults = new ObservableCollection<Taxon>();
+            SearchResults = new ObservableCollection<MycobankSpecimensTaxon>();
             IsSearching = false;
         }
 
@@ -99,7 +99,7 @@ namespace MycoViewer.ViewModels
                 var searchValue = _searchValue.Trim();
 
                 SearchResults.Clear();
-                List<Taxon> searchResults = await MycobankDataService.MycobankSpecimensSearchAsync(searchField, comparisonOperator, searchValue, limit);
+                List<MycobankSpecimensTaxon> searchResults = await MycobankDataService.MycobankSpecimensSearchAsync(searchField, comparisonOperator, searchValue, limit);
                 if (searchResults != null)
                 {
                     foreach (var searchResult in searchResults)

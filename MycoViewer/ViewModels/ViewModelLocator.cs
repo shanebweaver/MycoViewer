@@ -18,6 +18,7 @@ namespace MycoViewer.ViewModels
             SimpleIoc.Default.Register(() => new NavigationServiceEx());
             SimpleIoc.Default.Register<ShellViewModel>();
             Register<MainViewModel, MainPage>();
+            Register<MasterSearchViewModel, MasterSearchPage>();
             Register<MBWSearchViewModel, MBWSearchPage>();
             Register<MycobankLiteratureSearchViewModel, MycobankLiteratureSearchPage>();
             Register<MycobankSearchViewModel, MycobankSearchPage>();
@@ -32,6 +33,8 @@ namespace MycoViewer.ViewModels
         public SettingsViewModel SettingsViewModel => ServiceLocator.Current.GetInstance<SettingsViewModel>();
 
         public MainViewModel MainViewModel => ServiceLocator.Current.GetInstance<MainViewModel>();
+
+        public MasterSearchViewModel MasterSearchViewModel => ServiceLocator.Current.GetInstance<MasterSearchViewModel>();
 
         public MBWSearchViewModel MBWSearchViewModel => ServiceLocator.Current.GetInstance<MBWSearchViewModel>();
 

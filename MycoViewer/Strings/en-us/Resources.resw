@@ -236,4 +236,10 @@
   <data name="TaxaDescriptionsSearchPage_Title.Text" xml:space="preserve">
     <value>Taxa Descriptions Search</value>
   </data>
+  <data name="Shell_MasterSearch" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Shell_MasterIdentifications" xml:space="preserve">
+    <value>Identifications</value>
+  </data>
 </root>
