@@ -20,15 +20,23 @@ namespace MycoViewer.Views
 
         private void MasterSearchNavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            NavigationViewItem item = sender.MenuItems.OfType<NavigationViewItem>().First(x => (string)x.Content == (string)args.InvokedItem);
-            switch(item.Tag)
+            if (args.InvokedItem is string)
             {
-                case "mbw": ContentFrame.Navigate(typeof(MBWSearchPage)); break;
-                case "mycobank": ContentFrame.Navigate(typeof(MycobankSearchPage)); break;
-                case "mycobankLiterature": ContentFrame.Navigate(typeof(MycobankLiteratureSearchPage)); break;
-                case "mycobankSpecimens": ContentFrame.Navigate(typeof(MycobankSpecimensSearchPage)); break;
-                case "taxaDescriptions": ContentFrame.Navigate(typeof(TaxaDescriptionsSearchPage)); break;
+                NavigationViewItem item = sender.MenuItems.OfType<NavigationViewItem>().First(x => (string)x.Content == (string)args.InvokedItem);
+                switch (item?.Tag)
+                {
+                    case "basic": ContentFrame.Navigate(typeof(MBWSearchPage)); break;
+                    case "advanced": ContentFrame.Navigate(typeof(MycobankSearchPage)); break;
+                    case "specimens": ContentFrame.Navigate(typeof(MycobankLiteratureSearchPage)); break;
+                    case "thesaurus": ContentFrame.Navigate(typeof(MycobankSpecimensSearchPage)); break;
+                    case "bibliography": ContentFrame.Navigate(typeof(TaxaDescriptionsSearchPage)); break;
+                }
             }
+        }
+
+        private void MasterSearchNavView_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            
         }
     }
 }

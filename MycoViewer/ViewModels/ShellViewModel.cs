@@ -171,7 +171,7 @@ namespace MycoViewer.ViewModels
             // Edit String/en-US/Resources.resw: Add a menu item title for each page
             _primaryItems.Add(new ShellNavigationItem("Shell_Main".GetLocalized(), Symbol.Document, typeof(MainViewModel).FullName));
             _primaryItems.Add(new ShellNavigationItem("Shell_MasterSearch".GetLocalized(), Symbol.Find, typeof(MasterSearchViewModel).FullName));
-            _primaryItems.Add(new ShellNavigationItem("Shell_MasterIdentifications".GetLocalized(), Symbol.Find, typeof(MasterIdentificationsViewModel).FullName));
+            _primaryItems.Add(new ShellNavigationItem("Shell_MasterIdentifications".GetLocalized(), Symbol.Library, typeof(MasterIdentificationsViewModel).FullName));
             // -Identifications: Pairwise Sequence Alignments, Polyphasic identifications
             // Stats: http://www.mycobank.org/localfiles/stats.csv
             // News:
