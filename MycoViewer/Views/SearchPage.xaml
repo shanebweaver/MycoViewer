@@ -1,0 +1,70 @@
+﻿<Page
+    x:Class="MycoViewer.Views.SearchPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MycoViewer.Views"
+    Style="{StaticResource PageStyle}"
+    DataContext="{Binding SearchViewModel, Source={StaticResource Locator}}"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" 
+    xmlns:Interactions="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="12, 40, 12, 0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!-- Search Toolbar Panel -->
+        <StackPanel Orientation="Horizontal">
+
+            <!-- Add condition: -->
+            <Button>Add Condition</Button>
+
+            <!-- Match on: -->
+            <ToggleButton Name="MatchOnButton">
+                <Interactivity:Interaction.Behaviors>
+                    <Interactions:EventTriggerBehavior EventName="Checked" SourceObject="{Binding ElementName=MatchOnButton}">
+                        <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=MatchOnButton}" PropertyName="Content" Value="Match on: All conditions" />
+                    </Interactions:EventTriggerBehavior>
+                    <Interactions:EventTriggerBehavior EventName="Unchecked" SourceObject="{Binding ElementName=MatchOnButton}">
+                        <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=MatchOnButton}" PropertyName="Content" Value="Match on: Any conditions" />
+                    </Interactions:EventTriggerBehavior>
+                </Interactivity:Interaction.Behaviors>
+                Match on: Any conditions
+            </ToggleButton>
+
+            <!-- Reset conditions: -->
+            <Button>Reset base conditions(s)</Button>
+
+            <!-- Switch to: -->
+            <ToggleButton Name="SwitchToButton">
+                <Interactivity:Interaction.Behaviors>
+                    <Interactions:EventTriggerBehavior EventName="Checked" SourceObject="{Binding ElementName=SwitchToButton}">
+                        <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=SwitchToButton}" PropertyName="Content" Value="Switch to: Basic Search" />
+                    </Interactions:EventTriggerBehavior>
+                    <Interactions:EventTriggerBehavior EventName="Unchecked" SourceObject="{Binding ElementName=SwitchToButton}">
+                        <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=SwitchToButton}" PropertyName="Content" Value="Switch to: Advanced Search" />
+                    </Interactions:EventTriggerBehavior>
+                </Interactivity:Interaction.Behaviors>
+                Switch to: Advanced Search
+            </ToggleButton>
+
+            <!-- Search -->
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Find" Margin="0, 0, 8, 0" />
+                    <TextBlock>Search</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <!-- Search Results Panel -->
+        <Grid Grid.Row="1">
+            
+        </Grid>
+    </Grid>
+</Page>

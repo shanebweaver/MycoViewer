@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator; //using Microsoft.Practices.ServiceLocation;
 
 using MycoViewer.Activation;
 using MycoViewer.Helpers;

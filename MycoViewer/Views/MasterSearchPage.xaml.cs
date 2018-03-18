@@ -25,18 +25,19 @@ namespace MycoViewer.Views
                 NavigationViewItem item = sender.MenuItems.OfType<NavigationViewItem>().First(x => (string)x.Content == (string)args.InvokedItem);
                 switch (item?.Tag)
                 {
-                    case "basic": ContentFrame.Navigate(typeof(MBWSearchPage)); break;
-                    case "advanced": ContentFrame.Navigate(typeof(MycobankSearchPage)); break;
-                    case "specimens": ContentFrame.Navigate(typeof(MycobankLiteratureSearchPage)); break;
-                    case "thesaurus": ContentFrame.Navigate(typeof(MycobankSpecimensSearchPage)); break;
-                    case "bibliography": ContentFrame.Navigate(typeof(TaxaDescriptionsSearchPage)); break;
+                    case "basic": 
+                    case "advanced":
+                    case "specimens": 
+                    case "thesaurus": 
+                    case "bibliography":
+                        ContentFrame.Navigate(typeof(SearchPage)); break;
                 }
             }
         }
 
         private void MasterSearchNavView_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            
+            ContentFrame.Navigate(typeof(SearchPage));
         }
     }
 }

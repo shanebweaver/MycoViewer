@@ -1,8 +1,7 @@
 ﻿using System;
-
+using CommonServiceLocator; // using Microsoft.Practices.ServiceLocation;
 using GalaSoft.MvvmLight.Ioc;
 
-using Microsoft.Practices.ServiceLocation;
 
 using MycoViewer.Services;
 using MycoViewer.Views;
@@ -20,11 +19,7 @@ namespace MycoViewer.ViewModels
             Register<MainViewModel, MainPage>();
             Register<MasterIdentificationsViewModel, MasterIdentificationsPage>();
             Register<MasterSearchViewModel, MasterSearchPage>();
-            Register<MBWSearchViewModel, MBWSearchPage>();
-            Register<MycobankLiteratureSearchViewModel, MycobankLiteratureSearchPage>();
-            Register<MycobankSearchViewModel, MycobankSearchPage>();
-            Register<MycobankSpecimensSearchViewModel, MycobankSpecimensSearchPage>();
-            Register<TaxaDescriptionsSearchViewModel, TaxaDescriptionsSearchPage>();
+            Register<SearchViewModel, SearchPage>();
             Register<SettingsViewModel, SettingsPage>();
             Register<UriSchemeExampleViewModel, UriSchemeExamplePage>();
         }
@@ -39,15 +34,7 @@ namespace MycoViewer.ViewModels
 
         public MasterSearchViewModel MasterSearchViewModel => ServiceLocator.Current.GetInstance<MasterSearchViewModel>();
 
-        public MBWSearchViewModel MBWSearchViewModel => ServiceLocator.Current.GetInstance<MBWSearchViewModel>();
-
-        public MycobankLiteratureSearchViewModel MycobankLiteratureSearchViewModel => ServiceLocator.Current.GetInstance<MycobankLiteratureSearchViewModel>();
-
-        public MycobankSearchViewModel MycobankSearchViewModel => ServiceLocator.Current.GetInstance<MycobankSearchViewModel>();
-
-        public MycobankSpecimensSearchViewModel MycobankSpecimensSearchViewModel => ServiceLocator.Current.GetInstance<MycobankSpecimensSearchViewModel>();
-
-        public TaxaDescriptionsSearchViewModel TaxaDescriptionsSearchViewModel => ServiceLocator.Current.GetInstance<TaxaDescriptionsSearchViewModel>();
+        public SearchViewModel SearchViewModel => ServiceLocator.Current.GetInstance<SearchViewModel>();
 
         public ShellViewModel ShellViewModel => ServiceLocator.Current.GetInstance<ShellViewModel>();
 

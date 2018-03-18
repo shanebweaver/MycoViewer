@@ -21,23 +21,31 @@
             IsPaneOpen="True"
             IsPaneToggleButtonVisible="False"
             AlwaysShowHeader="False"
+            ExpandedModeThresholdWidth="0"
             Loaded="MasterSearchNavView_Loaded">
             <NavigationView.MenuItems>
                 <NavigationViewItemSeparator IsEnabled="True">
                     <NavigationViewItemSeparator.Template>
                         <ControlTemplate>
-                            <GridView 
+                            <Grid
                                 Name="BasicSearchRadioPanel" 
-                                Margin="12, 0"
-                                IsItemClickEnabled="False"
-                                SelectionMode="None">
+                                Margin="12, 18">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
                                 <RadioButton IsChecked="True">Any</RadioButton>
-                                <RadioButton>Epithet</RadioButton>
-                                <RadioButton>Species</RadioButton>
-                                <RadioButton>Genus</RadioButton>
-                                <RadioButton>Family</RadioButton>
-                                <RadioButton>Higher</RadioButton>
-                            </GridView>
+                                <RadioButton Grid.Column="1">Epithet</RadioButton>
+                                <RadioButton Grid.Row="1">Species</RadioButton>
+                                <RadioButton Grid.Row="1" Grid.Column="1">Genus</RadioButton>
+                                <RadioButton Grid.Row="2">Family</RadioButton>
+                                <RadioButton Grid.Row="2" Grid.Column="1">Higher</RadioButton>
+                            </Grid>
                         </ControlTemplate>
                     </NavigationViewItemSeparator.Template>
                 </NavigationViewItemSeparator>

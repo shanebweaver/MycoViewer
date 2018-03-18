@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-
+using CommonServiceLocator;
 using MycoViewer.Services;
 using MycoViewer.ViewModels;
 
@@ -17,7 +17,7 @@ namespace MycoViewer.Activation
         {
             get
             {
-                return Microsoft.Practices.ServiceLocation.ServiceLocator.Current.GetInstance<NavigationServiceEx>();
+                return ServiceLocator.Current.GetInstance<NavigationServiceEx>();
             }
         }
 

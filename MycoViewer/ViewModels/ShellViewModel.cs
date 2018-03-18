@@ -2,11 +2,10 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
-
+using CommonServiceLocator; // using Microsoft.Practices.ServiceLocation;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
-using Microsoft.Practices.ServiceLocation;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 
 using MycoViewer.Helpers;
@@ -31,7 +30,7 @@ namespace MycoViewer.ViewModels
         {
             get
             {
-                return Microsoft.Practices.ServiceLocation.ServiceLocator.Current.GetInstance<NavigationServiceEx>();
+                return ServiceLocator.Current.GetInstance<NavigationServiceEx>();
             }
         }
 
