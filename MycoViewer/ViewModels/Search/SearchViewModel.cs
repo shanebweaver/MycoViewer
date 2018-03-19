@@ -4,7 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace MycoViewer.ViewModels
+namespace MycoViewer.ViewModels.Search
 {
     public enum MatchOnOption
     {

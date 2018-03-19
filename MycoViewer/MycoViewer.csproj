@@ -138,22 +138,23 @@
     <Compile Include="Services\ThemeSelectorService.cs" />
     <Compile Include="Services\ViewLifetimeControl.cs" />
     <Compile Include="Services\WindowManagerService.cs" />
-    <Compile Include="ViewModels\SearchViewModel.cs" />
+    <Compile Include="ViewModels\Search\SearchViewModel.cs" />
     <Compile Include="ViewModels\MasterIdentificationsViewModel.cs" />
-    <Compile Include="ViewModels\MasterSearchViewModel.cs" />
+    <Compile Include="ViewModels\Search\MasterSearchViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ShellNavigationItem.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\Search\SimpleSearchViewModel.cs" />
     <Compile Include="ViewModels\UriSchemeExampleViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\MasterIdentificationsPage.xaml.cs">
       <DependentUpon>MasterIdentificationsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MasterSearchPage.xaml.cs">
+    <Compile Include="Views\Search\MasterSearchPage.xaml.cs">
       <DependentUpon>MasterSearchPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SearchPage.xaml.cs">
+    <Compile Include="Views\Search\SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
@@ -164,6 +165,9 @@
     </Compile>
     <Compile Include="Views\ShellPage.xaml.cs">
       <DependentUpon>ShellPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\SimpleSearchPage.xaml.cs">
+      <DependentUpon>SimpleSearchPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UriSchemeExamplePage.xaml.cs">
       <DependentUpon>UriSchemeExamplePage.xaml</DependentUpon>
@@ -204,11 +208,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\MasterSearchPage.xaml">
+    <Page Include="Views\Search\MasterSearchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SearchPage.xaml">
+    <Page Include="Views\Search\SearchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -223,6 +227,10 @@
     <Page Include="Views\ShellPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Search\SimpleSearchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UriSchemeExamplePage.xaml">
       <Generator>MSBuild:Compile</Generator>

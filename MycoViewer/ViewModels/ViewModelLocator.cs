@@ -4,7 +4,9 @@ using GalaSoft.MvvmLight.Ioc;
 
 
 using MycoViewer.Services;
+using MycoViewer.ViewModels.Search;
 using MycoViewer.Views;
+using MycoViewer.Views.Search;
 
 namespace MycoViewer.ViewModels
 {
@@ -19,6 +21,7 @@ namespace MycoViewer.ViewModels
             Register<MainViewModel, MainPage>();
             Register<MasterIdentificationsViewModel, MasterIdentificationsPage>();
             Register<MasterSearchViewModel, MasterSearchPage>();
+            Register<SimpleSearchViewModel, SimpleSearchPage>();
             Register<SearchViewModel, SearchPage>();
             Register<SettingsViewModel, SettingsPage>();
             Register<UriSchemeExampleViewModel, UriSchemeExamplePage>();
@@ -33,6 +36,8 @@ namespace MycoViewer.ViewModels
         public MasterIdentificationsViewModel MasterIdentificationsViewModel => ServiceLocator.Current.GetInstance<MasterIdentificationsViewModel>();
 
         public MasterSearchViewModel MasterSearchViewModel => ServiceLocator.Current.GetInstance<MasterSearchViewModel>();
+
+        public SimpleSearchViewModel SimpleSearchViewModel => ServiceLocator.Current.GetInstance<SimpleSearchViewModel>();
 
         public SearchViewModel SearchViewModel => ServiceLocator.Current.GetInstance<SearchViewModel>();
 

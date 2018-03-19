@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Linq;
-using MycoViewer.ViewModels;
+using MycoViewer.ViewModels.Search;
 
 using Windows.UI.Xaml.Controls;
 
-namespace MycoViewer.Views
+namespace MycoViewer.Views.Search
 {
     public sealed partial class MasterSearchPage : Page
     {
-        private MasterSearchViewModel ViewModel
-        {
-            get { return DataContext as MasterSearchViewModel; }
-        }
+        private MasterSearchViewModel ViewModel => DataContext as MasterSearchViewModel;
 
         public MasterSearchPage()
         {
@@ -30,14 +27,14 @@ namespace MycoViewer.Views
                     case "specimens": 
                     case "thesaurus": 
                     case "bibliography":
-                        ContentFrame.Navigate(typeof(SearchPage)); break;
+                        ContentFrame.Navigate(typeof(SearchPage), item?.Tag); break;
                 }
             }
         }
 
         private void MasterSearchNavView_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            ContentFrame.Navigate(typeof(SearchPage));
+            ContentFrame.Navigate(typeof(SimpleSearchPage));
         }
     }
 }

@@ -10,6 +10,7 @@ using Microsoft.Toolkit.Uwp.UI.Controls;
 
 using MycoViewer.Helpers;
 using MycoViewer.Services;
+using MycoViewer.ViewModels.Search;
 using MycoViewer.Views;
 
 using Windows.UI.Xaml;
