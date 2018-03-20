@@ -11,6 +11,22 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <local:SearchFieldTemplateSelector x:Key="SearchFieldTemplateSelector" />
+
+        <DataTemplate x:Key="SearchFieldHeaderTemplate">
+            <Grid>
+
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="SearchFieldValueTemplate">
+            <Grid>
+                
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="12, 40, 12, 0">
 
         <Grid.RowDefinitions>
@@ -22,7 +38,20 @@
         <StackPanel Orientation="Horizontal">
 
             <!-- Add condition: -->
-            <Button>Add Condition</Button>
+            <Button>
+                <Button.Flyout>
+                    <Flyout>
+                        <Grid>
+                            <ListView
+                                ItemsSource="{x:Bind ViewModel.SearchFields}"
+                                ItemTemplateSelector="{StaticResource SearchFieldTemplateSelector}">
+                                
+                            </ListView>
+                        </Grid>
+                    </Flyout>
+                </Button.Flyout>
+                Add Condition
+            </Button>
 
             <!-- Match on: -->
             <ToggleButton Name="MatchOnButton">
