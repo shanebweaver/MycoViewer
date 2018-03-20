@@ -25,6 +25,11 @@
                 Grid.Row="1"
                 ItemsSource="{x:Bind ViewModel.SearchScopes}"
                 SelectedItem="{x:Bind ViewModel.SelectedSearchScope }">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
                         <Setter Property="Template">
