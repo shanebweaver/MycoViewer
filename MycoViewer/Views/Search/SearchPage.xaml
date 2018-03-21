@@ -7,27 +7,34 @@
     DataContext="{Binding SearchViewModel, Source={StaticResource Locator}}"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" 
     xmlns:Interactions="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Search="using:MycoViewer.Search"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <Page.Resources>
-        <local:SearchFieldTemplateSelector x:Key="SearchFieldTemplateSelector" />
 
-        <DataTemplate x:Key="SearchFieldHeaderTemplate">
-            <Grid>
-
+        <DataTemplate x:Key="SearchFieldHeaderTemplate" x:DataType="Search:SearchFieldItem">
+            <Grid Name="SearchFieldHeaderPanel">
+                <TextBlock Text="{x:Bind SearchFieldName}" />
             </Grid>
         </DataTemplate>
 
-        <DataTemplate x:Key="SearchFieldValueTemplate">
+        <DataTemplate x:Key="SearchFieldValueTemplate" x:DataType="Search:SearchFieldItem">
             <Grid>
-                
+                <TextBlock Text="{x:Bind SearchFieldName}" />
             </Grid>
         </DataTemplate>
+
+        <Search:SearchFieldTemplateSelector 
+            x:Key="SearchFieldTemplateSelector" 
+            HeaderTemplate="{StaticResource SearchFieldHeaderTemplate}" 
+            ValueTemplate="{StaticResource SearchFieldValueTemplate}" />
     </Page.Resources>
     
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="12, 40, 12, 0">
+    <Grid 
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" 
+        Margin="12, 40, 12, 0">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -45,7 +52,6 @@
                             <ListView
                                 ItemsSource="{x:Bind ViewModel.SearchFields}"
                                 ItemTemplateSelector="{StaticResource SearchFieldTemplateSelector}">
-                                
                             </ListView>
                         </Grid>
                     </Flyout>

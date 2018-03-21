@@ -118,7 +118,11 @@
   <ItemGroup>
     <Compile Include="Activation\ActivationHandler.cs" />
     <Compile Include="Activation\SchemeActivationHandler.cs" />
-    <Compile Include="Views\Search\SearchFieldTemplateSelector.cs" />
+    <Compile Include="Search\SearchField.cs" />
+    <Compile Include="Search\SearchFieldCollection.cs" />
+    <Compile Include="Search\SearchFieldExtensions.cs" />
+    <Compile Include="Search\SearchFieldItem.cs" />
+    <Compile Include="Search\SearchFieldTemplateSelector.cs" />
     <Compile Include="Converters\InverseBoolConverter.cs" />
     <Compile Include="Helpers\EnumToBooleanConverter.cs" />
     <Compile Include="Helpers\Json.cs" />
